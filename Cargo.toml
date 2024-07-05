@@ -1,0 +1,30 @@
+[package]
+name = "hashmap_ffi_c"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+
+[features]
+capi=[]
+
+[build-dependencies]
+cbindgen = "0.26.0"
+
+[dev-dependencies]
+cargo-c = "0.10.2"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+panic = "abort"
+codegen-units = 1
+
+
